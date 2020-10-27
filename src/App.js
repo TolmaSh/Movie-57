@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,24 +8,27 @@ import {
 
 import Header from './pages/Header'
 import HomePage from './pages/HomePage'
-import ModalPage from './pages/ModalPage'
 import './App.css';
 
 
 function App() {
+  const [modalPage, setModalPage] = useState(null)
   return (
     <div className="App">
       
       <Router>
          <Switch>
         <Route exact path="/">
-            <Header />
-            <HomePage />
+            <div className={modalPage == null ? `` : `modal-menu`}><Header /></div>
+            <HomePage 
+            setModalPage={setModalPage}
+            modalPage={modalPage}
+            />
           </Route>
-          <Route path="/modal">
+          {/* <Route path="/favorite">
             <Header />
             <ModalPage />
-          </Route>
+          </Route> */}
          
         </Switch>
       

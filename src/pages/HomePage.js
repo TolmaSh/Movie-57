@@ -1,10 +1,12 @@
 
 import React, {useState, useEffect,} from 'react';
 import Pagination from "react-js-pagination";
+import ModalPage from "./ModalPage"
 
 
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const {setModalPage, modalPage} = props;
   const [data, setData] = useState([])
   const [page, setPage] = useState(1)
   const [pagesAmount, setPagesAmount] = useState(1)
@@ -24,14 +26,14 @@ const HomePage = () => {
   } ,[page])
   const Films = data
         .map((el, index) => {
-            return <div key={el.id}  className='poster-wrap'>
+            return <div key={el.id} onClick={() => { props.setModalPage(index) }}  className='poster-wrap'>
                 <div className='image-wrap'>
                     <img src={`http://image.tmdb.org/t/p/w342/${el.poster_path}` } alt='Coming sooon.....'  />
                     <div className='image-text'><div><strong>{el.original_title}</strong></div></div>
                 </div>
             </div>
         })
-
+if (props.modalPage == null) {
   return (
    <div className="main-container">
       <div className="main-title"><h2>Latest Releases</h2></div>
@@ -58,5 +60,14 @@ const HomePage = () => {
    </div>
   );
 }
+else {
+  return (
+    <ModalPage
+    data={data}
+    setModalPage={setModalPage}
+    modalPage={modalPage}
+    />
+  )
+}}
 
 export default HomePage;
