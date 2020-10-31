@@ -8,6 +8,7 @@ import {
 
 import Header from './pages/Header'
 import HomePage from './pages/HomePage'
+import Favorite from './pages/Favorite'
 import './App.css';
 
 
@@ -25,10 +26,10 @@ function App() {
             modalPage={modalPage}
             />
           </Route>
-          {/* <Route path="/favorite">
+          <Route path="/favorite">
             <Header />
-            <ModalPage />
-          </Route> */}
+            <Favorite />
+          </Route>
          
         </Switch>
       

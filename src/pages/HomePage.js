@@ -10,6 +10,7 @@ const HomePage = (props) => {
   const [data, setData] = useState([])
   const [page, setPage] = useState(1)
   const [pagesAmount, setPagesAmount] = useState(1)
+  
   // // let pagBtn = (btnNum) => setPage(btnNum.selected + 1);
   // For react-paginate
 
@@ -26,7 +27,7 @@ const HomePage = (props) => {
   } ,[page])
   const Films = data
         .map((el, index) => {
-            return <div key={el.id} onClick={() => { props.setModalPage(index) }}  className='poster-wrap'>
+            return <div key={el.id} onClick={() => { props.setModalPage(el)  }}  className='poster-wrap'>
                 <div className='image-wrap'>
                     <img src={`http://image.tmdb.org/t/p/w342/${el.poster_path}` } alt='Coming sooon.....'  />
                     <div className='image-text'><div><strong>{el.original_title}</strong></div></div>
@@ -63,7 +64,7 @@ if (props.modalPage == null) {
 else {
   return (
     <ModalPage
-    data={data}
+    
     setModalPage={setModalPage}
     modalPage={modalPage}
     />
