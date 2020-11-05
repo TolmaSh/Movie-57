@@ -1,5 +1,6 @@
 
 /* HEADER */
+
 .header-wrapper {
   background-color: rgb(99, 99, 99);
   color: white;
@@ -9,6 +10,11 @@
 }
 .header-wrapper h3 {
   margin-left: 15px;
+  color:white;
+  
+}
+.header-wrapper a:hover {
+  text-decoration: none;
 }
 .left-header {
   display: flex;
@@ -175,6 +181,9 @@ margin-top: 100px;
 .modal-information-overview-mobile {
   display: none;
 }
+.modal-information-mobile {
+  display: none;
+}
 .main-information {
   margin-left: 50px;
 }
@@ -209,6 +218,7 @@ margin-top: 100px;
   }
   .favorite-main-information {
     margin-left: 60px;
+    width: 100%;
     
   }
   .favorite-information-title{
@@ -222,14 +232,27 @@ margin-top: 100px;
   .favorite-information-overview {
     margin-top: 40px;
   }
+  .favorite-main-img:hover {
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+    cursor: pointer;
+  }
 /* MEDIA SCREEN */
 @media only screen and (max-width: 900px) {
   .main-content {
     grid-template-columns: repeat(4, 1fr);
   }
+  .main-container {
+    height: calc(100vh + 300px);
+  }
+  .favorite-button {
+    height: 50px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
+  .main-container {
+    height: 100%;
+  }
   .modal-menu {
     display: none;
   }
@@ -268,14 +291,17 @@ margin-top: 100px;
       }
     /* MODAL MAIN */
     .modal-container {
-      height: 100vh;
+      height: 900px;
     }
     .modal-main {
       margin-top: 40px;
+      max-width: 100%;
+      
+      margin-right: 10px;
     }
     .modal-image img {
       box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
-      width: 150px;
+      width: 180px;
     }
     .modal-information-title {
       display: none;
@@ -319,6 +345,10 @@ margin-top: 100px;
       padding-left: 20px;
       padding-right: 20px;
     }
+    .favorite-main {
+      margin-top: 20px;
+      padding-bottom: 20px;
+    }
     .favorite-main-img img {
       width: 150px;
       height: 250px;
@@ -341,7 +371,41 @@ margin-top: 100px;
     .favorite-information-overview {
       margin-top: 10px;
       font-size: 0.9em;
+      overflow: scroll;
+      max-height: 185px ;
+      
+    }
+    .main-footer {
+      padding-bottom: 30px;
+    }
+    .main-information {
+      margin-left: 10px;
+    }
+    .modal-information-desktop{
+      display: none;
+    }
+    .modal-information-mobile {
+      display: flex;
+    }
+    .mobile-favorite {
+      display: inline-block;
+    }
+    .mobile-favorite-button {
+      width: 45px;
+      border: 2px solid white;
+      padding: 0;
+      margin-top: 30px;
+    }
+    .mobile-favorite-button:hover {
+      background-color: rgba(255, 255, 255, 0.048);
       
     }
     
+    
+}
+
+@media only screen and (max-width: 320px) {
+  .button-favorite-page {
+    width: 100%;
+  }
 }

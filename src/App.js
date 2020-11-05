@@ -1,39 +1,24 @@
-import React, {useState} from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Favorite from "./pages/Favorite";
+import "./App.css";
 
-import Header from './pages/Header'
-import HomePage from './pages/HomePage'
-import Favorite from './pages/Favorite'
-import './App.css';
-
-
-function App() {
-  const [modalPage, setModalPage] = useState(null)
+function App(props) {
   return (
     <div className="App">
-      
       <Router>
-         <Switch>
-        <Route exact path="/">
-            <div className={modalPage == null ? `` : `modal-menu`}><Header /></div>
-            <HomePage 
-            setModalPage={setModalPage}
-            modalPage={modalPage}
-            />
+        <Switch>
+          <Route exact path="/">
+
+            <HomePage />
           </Route>
           <Route path="/favorite">
-            <Header />
+
             <Favorite />
           </Route>
-         
         </Switch>
-      
-    </Router>
+      </Router>
     </div>
   );
 }

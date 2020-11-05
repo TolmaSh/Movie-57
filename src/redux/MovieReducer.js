@@ -1,7 +1,6 @@
 import { FILM_ACTIONS } from "./actions";
 
 const INITITAL_STATE = {
-  abc: "",
   films: []
 };
 
@@ -16,7 +15,7 @@ const movieReducer = (state = INITITAL_STATE, action) => {
     case FILM_ACTIONS.UNSET_FAVOURITE: {
       return {
         ...state,
-        films: state.films.filter(filmId => filmId !== action.payload)
+        films: state.films.filter(filmData => filmData.id !== action.payload)
       };
     }
     default: {

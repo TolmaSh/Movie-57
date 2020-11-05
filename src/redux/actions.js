@@ -3,10 +3,10 @@ const FILM_ACTIONS = {
   UNSET_FAVOURITE: "UNSET_FAVOURITE"
 };
 
-const setFavourite = id => {
+const setFavourite = filmData => {
   return {
     type: FILM_ACTIONS.SET_FAVOURITE,
-    payload: id
+    payload: filmData
   };
 };
 const unSetFavourite = id => {

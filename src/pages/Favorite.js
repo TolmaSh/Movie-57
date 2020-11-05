@@ -1,25 +1,97 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ModalPage from '../pages/ModalPage'
+import { useSelector , useDispatch } from 'react-redux';
+import { unSetFavourite } from '../redux/actions';
+import Header from "./Header"
 
 
-const Favorite = () => {
-    return (
+const Favorite = (props) => {
+    
+    
+    
+    const dispatch = useDispatch();
+    
+    const favoriteFilms = useSelector(state => state.filmData.films)
+    const [modalPage, setModalPage] = useState({
+        filmData: null,
+        id: 0,
+        totalFilms: favoriteFilms.length
+      });
+    const unSetFavoriteHandler = id => {
+        return dispatch(unSetFavourite(id));
+    }
+      
 
+    const setNextFilmHandler = id => {
+        setModalPage({
+          filmData: favoriteFilms[id],
+          id: id + 1,
+          totalFilms: favoriteFilms.length
+        });
+      };
+    
+      const filmClickHandler = (el , id) => {
+          
+        setModalPage({
+          filmData: el,
+          id: id,
+          totalFilms: favoriteFilms.length
+        });
+      };
+
+
+    const films = favoriteFilms.length > 0 ? favoriteFilms.map((film,index) => (
+    <div className="favorite-main" key={film.id}>
+    <div className="favorite-main-img " 
+    onClick={() => {
+        filmClickHandler(film, index + 1);
+      }} ><img src={`http://image.tmdb.org/t/p/w342/${film.poster_path}`}  alt='Coming sooon.....'/></div>
+    <div className="favorite-main-information">
+        <div className="favorite-information-title">
+            <h2>{film.original_title}</h2>
+            <button type="button" className="btn btn-outline-secondary button-favorite-page"  onClick={() => unSetFavoriteHandler(film.id) }>Unfavorite</button>
+        </div>
+    <div className="favorite-information-overview"><p>{film.overview}</p></div>
+    </div>
+</div>
+)) : (<p>You dont have favourites films ;(</p>);
+
+
+    return modalPage?.filmData === null ? (
+    <>
+
+        <div className= {modalPage?.filmData === null ? "" : "modal-menu"}>
+              <Header
+              setModalPage={setModalPage}
+              modalPage={modalPage}
+              />
+        </div>
         <div className="main-container">
             <div className="main-title"><h2>My favorite</h2></div>
-            <div className="favorite-main">
-                <div className="favorite-main-img"><img src="http://placehold.it/250x350"  alt='Coming sooon.....'/></div>
-                <div className="favorite-main-information">
-                    <div className="favorite-information-title">
-                        <h2>FILM TITLE</h2>
-                        <button type="button" className="btn btn-outline-secondary button-favorite-page">Unfavorite</button>
-                    </div>
-                    <div className="favorite-information-overview"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div>
-                </div>
-            </div>
+            {films}
+            
 
 
         </div>
-    );
+        
+    </>
+        )
+    
+    : (
+    <>
+        <div className= {modalPage?.filmData === null ? "" : "modal-menu"}>
+              <Header
+              setModalPage={setModalPage}
+              modalPage={modalPage}
+              />
+        </div>
+        <ModalPage
+          setModalPage={setModalPage}
+          modalPage={modalPage}
+          setNextFilm={setNextFilmHandler}
+        />
+    </>
+      );
 }
 
 export default Favorite;
