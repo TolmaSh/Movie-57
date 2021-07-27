@@ -9,11 +9,11 @@ function App(props) {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/Movie-57-React-Redux">
 
             <HomePage />
           </Route>
-          <Route path="/favorite">
+          <Route path="*/favorite">
 
             <Favorite />
           </Route>
