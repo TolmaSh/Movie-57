@@ -69,9 +69,6 @@ const Favorite = (props) => {
         <div className="main-container">
             <div className="main-title"><h2>My favorite</h2></div>
             {films}
-            
-
-
         </div>
         
     </>
