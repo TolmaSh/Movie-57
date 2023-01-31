@@ -1,5 +1,7 @@
 import React from 'react';
 import './Header.scss'
+import { Button } from 'react-bootstrap';
+
 
 
 export const Header = () => {
@@ -13,9 +15,13 @@ export const Header = () => {
                 </svg>
                 <a className='header__link' href="/">Movie-57</a>
             </h1>
-            <nav className='header__nav'>
+            <div className='header__dropdown dropdown'>
+                <button  >
+                    <span>My account</span>
+                </button>
+                <Button variant="secondary">Hi</Button>
 
-            </nav>
+            </div>
         </header>
     );
 };
