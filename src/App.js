@@ -9,7 +9,7 @@ function App(props) {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/Movie-57-React-Redux">
+          <Route exact path="/Movie-57">
 
             <HomePage />
           </Route>

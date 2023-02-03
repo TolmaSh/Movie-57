@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from "redux";
-import { movieReducer } from "./movieReducer";
+import { movieReducer } from "./MovieReducer";
 // REDUX PERSIST
 
 

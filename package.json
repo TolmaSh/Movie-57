@@ -2,7 +2,7 @@
   "name": "movie-database-react-redux",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://TolmaSh.github.io/Movie-57-React-Redux/",
+  "homepage": "https://TolmaSh.github.io/Movie-57/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
